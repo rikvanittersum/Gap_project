@@ -5,12 +5,13 @@ import numpy as np
 import datetime
 yf.pdr_override()
 
-start = "2010-10-10"
+start = "2021-10-10"
 end = "2021-10-25"
 stock = "INTC"
 
 def get_df_gaps(stock, start, end):
-    df_history = df = pdr.get_data_yahoo(stock, start=start, end=end)
+    df_history = pdr.get_data_yahoo(stock, start=start, end=end)
+    df = pdr.get_data_yahoo(stock, start=start, end=end)
     df['Gap'] = candeles_overlap(df)
 
     df['Gap_up'] = gap_up(df['High'], df['High'].shift(1))
@@ -25,13 +26,11 @@ def get_df_gaps(stock, start, end):
     return [df_history, df]
 
 dfs = get_df_gaps(stock, start, end)
-df_gaps = dfs[1]
 df_historical = dfs[0]
+df_gaps = dfs[1]
 
+print(df_historical)
 
-for row in df_gaps():
-    df_gaps = df_gaps[df_gaps['Date'] > datetime.datetime(2020, 5, 18)]
-print(df_gaps.head())
 
 
 

@@ -15,7 +15,7 @@ def size_gap_up(low, high_db, close_db):
     return (low - high_db) / close_db * 100
 
 def size_gap_down(high, low_db, close_db):
-    return (low_db - high)  / close_db * 100
+    return (low_db - high) / close_db * 100
 
 
 
