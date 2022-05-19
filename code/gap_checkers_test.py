@@ -35,5 +35,9 @@ class MyTestCase(unittest.TestCase):
         gc = gap_up_checker(df, 1, "2020-10-08")
         self.assertFalse(gc.price_day_before_gap_is_reached())
 
+    def test_when_price_before_gap_up_is_not_reached_should_return_false(self):
+        df = create_df("2020-10-08", [[4, 5], [2, 3]])
+        gc = gap_up_checker(df, 1, "2020-10-08")
+        self.assertFalse(gc.price_day_before_gap_is_reached())
 if __name__ == '__main__':
     unittest.main()
